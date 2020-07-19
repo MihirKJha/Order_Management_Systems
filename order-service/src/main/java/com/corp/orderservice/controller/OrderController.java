@@ -16,12 +16,10 @@ import com.corp.orderservice.service.OrderService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.log4j.Log4j;
 
 @RestController
 @RequestMapping("/order")
 @Api("Rest controller for order")
-@Log4j
 public class OrderController {
 
 	@Autowired
