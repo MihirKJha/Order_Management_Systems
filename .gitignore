@@ -2,3 +2,6 @@
 netflix-eureka-naming-server/.project
 netflix-zuul-api-gateway-server/.project
 spring-cloud-config-server/.project
+netflix-zuul-api-gateway-server/.project
+netflix-eureka-naming-server/.project
+spring-cloud-config-server/.project

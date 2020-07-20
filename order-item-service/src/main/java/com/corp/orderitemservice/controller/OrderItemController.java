@@ -1,5 +1,6 @@
 package com.corp.orderitemservice.controller;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,13 @@ public class OrderItemController {
 
 	@ApiOperation("API to create order item")
 	@PostMapping("/createOrder")
-	public String createOrderItem(@RequestBody @NotNull CreateOrderItemDto createOrderItemDto) {
+	public String createOrderItem(@RequestBody @Valid @NotNull CreateOrderItemDto createOrderItemDto) {
 		return orderItemService.createOrderItem(createOrderItemDto);
 	}
 
 	@ApiOperation("API to retrieve order item")
 	@GetMapping("/retrieveOrderItem/{productCode}")
-	public OrderItem retrieveOrderItem(@PathVariable @NotNull String productCode) {
+	public OrderItem retrieveOrderItem(@PathVariable @Valid @NotNull String productCode) {
 		return orderItemService.getOrderItem(productCode);
 	}
 }

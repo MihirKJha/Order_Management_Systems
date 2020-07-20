@@ -1,5 +1,6 @@
 package com.corp.orderservice.controller;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +28,14 @@ public class OrderController {
 
 	@ApiOperation("API to create order")
 	@PostMapping("/createOrder")
-	public String createOrder(@RequestBody @NotNull CreateOrderDto createOrderDto) {
+	public String createOrder(@RequestBody @Valid @NotNull CreateOrderDto createOrderDto) {
 		return orderService.createOrder(createOrderDto);
 
 	}
 
 	@ApiOperation("API to retrieve order")
 	@GetMapping("/retrieveOrder/{orderNumber}")
-	public Order retrieveOrder(@PathVariable String orderNumber) {
+	public Order retrieveOrder(@PathVariable @Valid String orderNumber) {
 		return orderService.getOrder(orderNumber);
 
 	}

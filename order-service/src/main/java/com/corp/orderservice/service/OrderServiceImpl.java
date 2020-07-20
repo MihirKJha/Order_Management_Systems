@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.corp.orderitemservice.entity.OrderItem;
+import com.corp.orderitemservice.exception.OrderItemNotFoundException;
 import com.corp.orderitemservice.proxy.OrderItemServiceProxy;
 import com.corp.orderservice.dto.CreateOrderDto;
 import com.corp.orderservice.entity.Order;
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
 		OrderItem orderItem = orderItemServiceProxy.retrieveOrderItem(createOrderDto.getProductCode());
 
 		if (orderItem == null) {
-			throw new RuntimeException();
+			throw new OrderItemNotFoundException("Product not found " + createOrderDto.getProductCode());
 		}
 
 		Optional<Order> optOrder = orderRepository.findAll().stream().max(Comparator.comparing(Order::getOrderNumber));
