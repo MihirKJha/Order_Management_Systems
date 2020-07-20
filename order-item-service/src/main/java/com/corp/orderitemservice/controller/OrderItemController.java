@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.corp.orderitemservice.dto.CreateOrderItemDto;
 import com.corp.orderitemservice.entity.OrderItem;
 import com.corp.orderitemservice.service.OrderItemService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +35,13 @@ public class OrderItemController {
 
 	@ApiOperation("API to retrieve order item")
 	@GetMapping("/retrieveOrderItem/{productCode}")
+	@HystrixCommand(fallbackMethod = "fallbackOrderItem")
 	public OrderItem retrieveOrderItem(@PathVariable @Valid @NotNull String productCode) {
 		return orderItemService.getOrderItem(productCode);
 	}
+
+	public OrderItem fallbackOrderItem() {
+		return new OrderItem();
+	}
+
 }
