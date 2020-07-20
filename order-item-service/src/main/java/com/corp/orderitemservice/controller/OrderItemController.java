@@ -40,7 +40,7 @@ public class OrderItemController {
 		return orderItemService.getOrderItem(productCode);
 	}
 
-	public OrderItem fallbackOrderItem() {
+	public OrderItem fallbackOrderItem(String productCode) {
 		return new OrderItem();
 	}
 

@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Optional;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
 
 		OrderItemVo orderItem = orderItemServiceProxy.retrieveOrderItem(createOrderDto.getProductCode());
 
-		if (orderItem == null) {
+		if (StringUtils.isBlank(orderItem.getProductCode())) {
 			throw new OrderItemNotFoundException("Product not found " + createOrderDto.getProductCode());
 		}
 
@@ -41,6 +42,8 @@ public class OrderServiceImpl implements OrderService {
 
 		if (optOrder.isPresent()) {
 			orderNumber = optOrder.get().getOrderNumber();
+		} else {
+			orderNumber = 1;
 		}
 
 		Order order = new Order();

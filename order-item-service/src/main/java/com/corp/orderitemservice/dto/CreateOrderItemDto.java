@@ -1,6 +1,7 @@
 package com.corp.orderitemservice.dto;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,6 @@ public class CreateOrderItemDto {
 	private String productCode;
 	@NotEmpty
 	private String productName;
-	@NotEmpty
+	@NotNull
 	private int quantity;
 }

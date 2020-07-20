@@ -3,6 +3,7 @@ package com.corp.orderservice.dto;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +15,12 @@ import lombok.ToString;
 public class CreateOrderDto {
 	@NotEmpty
 	private String customerName;
-	@NotEmpty
+	@NotNull
 	private Date orderDate;
 	@NotEmpty
 	private String shippingAddress;
 	@NotEmpty
 	private String productCode;
-	@NotEmpty
+	@NotNull
 	private long total;
 }
