@@ -15,3 +15,14 @@ Order has below data:
 -	Order items
 -	Total ($)
 
+
+Tech stack:
+- Java
+- Spring REST 
+- Spring Boot
+- Spring data JPA
+- H2
+-Swagger
+-Lombok
+-Spring cloud (Eureka,Ribbon,Feign,Hystrix ciruit breaker,API Gateway,Config,Zipkin server with Sring cloud Sleuth and RabbitMQ)
+
