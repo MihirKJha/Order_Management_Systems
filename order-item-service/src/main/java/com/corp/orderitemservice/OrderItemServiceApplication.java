@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import brave.sampler.Sampler;
 
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients("com.corp.orderitemservice")
 @EnableDiscoveryClient
 @EnableHystrix
 public class OrderItemServiceApplication {

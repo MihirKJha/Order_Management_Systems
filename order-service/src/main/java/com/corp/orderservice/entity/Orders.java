@@ -13,17 +13,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ORDER_INFO")
+@Table(name = "ORDERS")
 @Getter
 @Setter
-public class Order {
+public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "ORDER_NUMBER")
-	private Long orderNumber;
+	private long orderNumber;
 
 	@Column(name = "CUSTOMER_NAME")
 	private String customerName;
@@ -39,5 +39,4 @@ public class Order {
 
 	@Column(name = "TOTAL")
 	private long total;
-
 }

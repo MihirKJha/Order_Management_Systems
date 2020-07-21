@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.corp.orderservice.dto.CreateOrderDto;
-import com.corp.orderservice.entity.Order;
+import com.corp.orderservice.entity.Orders;
 import com.corp.orderservice.exception.OrderItemNotFoundException;
 import com.corp.orderservice.proxy.OrderItemServiceProxy;
 import com.corp.orderservice.repository.OrderRepository;
@@ -37,7 +37,8 @@ public class OrderServiceImpl implements OrderService {
 			throw new OrderItemNotFoundException("Product not found " + createOrderDto.getProductCode());
 		}
 
-		Optional<Order> optOrder = orderRepository.findAll().stream().max(Comparator.comparing(Order::getOrderNumber));
+		Optional<Orders> optOrder = orderRepository.findAll().stream()
+				.max(Comparator.comparing(Orders::getOrderNumber));
 		long orderNumber = Long.MAX_VALUE;
 
 		if (optOrder.isPresent()) {
@@ -46,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
 			orderNumber = 1;
 		}
 
-		Order order = new Order();
+		Orders order = new Orders();
 		order.setOrderDate(new Date());
 		order.setOrderItem(createOrderDto.getProductCode());
 		order.setOrderNumber(orderNumber++);
@@ -59,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrder(String orderNumber) {
+	public Orders getOrder(Long orderNumber) {
 		log.info("OrderNumber inside getOrderItem  " + orderNumber);
 
 		return orderRepository.findByOrderNumber(orderNumber);

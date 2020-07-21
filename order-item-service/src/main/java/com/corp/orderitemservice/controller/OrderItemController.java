@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,15 +29,15 @@ public class OrderItemController {
 	private OrderItemService orderItemService;
 
 	@ApiOperation("API to create order item")
-	@PostMapping("/createOrder")
+	@PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String createOrderItem(@RequestBody @Valid @NotNull CreateOrderItemDto createOrderItemDto) {
 		return orderItemService.createOrderItem(createOrderItemDto);
 	}
 
 	@ApiOperation("API to retrieve order item")
-	@GetMapping("/retrieveOrderItem/{productCode}")
+	@GetMapping(value = "/retrieveOrderItem/{productCode}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@HystrixCommand(fallbackMethod = "fallbackOrderItem")
-	public OrderItem retrieveOrderItem(@PathVariable @Valid @NotNull String productCode) {
+	public OrderItem retrieveOrderItem(@PathVariable("productCode") @Valid @NotNull String productCode) {
 		return orderItemService.getOrderItem(productCode);
 	}
 
