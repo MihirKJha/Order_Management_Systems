@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
 		long orderNumber = Long.MAX_VALUE;
 
 		if (optOrder.isPresent()) {
-			orderNumber = optOrder.get().getOrderNumber();
+			orderNumber = optOrder.get().getOrderNumber() + 1;
 		} else {
 			orderNumber = 1;
 		}
@@ -50,7 +50,8 @@ public class OrderServiceImpl implements OrderService {
 		Orders order = new Orders();
 		order.setOrderDate(new Date());
 		order.setOrderItem(createOrderDto.getProductCode());
-		order.setOrderNumber(orderNumber++);
+		order.setOrderNumber(orderNumber);
+		order.setCustomerName(createOrderDto.getCustomerName());
 		order.setShippingAddress(createOrderDto.getShippingAddress());
 		order.setTotal(createOrderDto.getTotal());
 

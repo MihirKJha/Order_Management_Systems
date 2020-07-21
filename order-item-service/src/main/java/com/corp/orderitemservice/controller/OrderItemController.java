@@ -29,7 +29,7 @@ public class OrderItemController {
 	private OrderItemService orderItemService;
 
 	@ApiOperation("API to create order item")
-	@PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/createOrderItem", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String createOrderItem(@RequestBody @Valid @NotNull CreateOrderItemDto createOrderItemDto) {
 		return orderItemService.createOrderItem(createOrderItemDto);
 	}

@@ -27,7 +27,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 
 		orderItemRepository.save(orderItem);
 
-		return null;
+		return orderItem.getProductCode();
 	}
 
 	@Override
