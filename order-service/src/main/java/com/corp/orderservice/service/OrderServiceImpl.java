@@ -27,6 +27,8 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderItemServiceProxy orderItemServiceProxy;
 
+	private static final String error = "Product not found ";
+
 	@Override
 	public String createOrder(CreateOrderDto createOrderDto) {
 		log.info("createOrderDto inside createOrder  " + createOrderDto);
@@ -34,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 		OrderItemVo orderItem = orderItemServiceProxy.retrieveOrderItem(createOrderDto.getProductCode());
 
 		if (StringUtils.isBlank(orderItem.getProductCode())) {
-			throw new OrderItemNotFoundException("Product not found " + createOrderDto.getProductCode());
+			throw new OrderItemNotFoundException(error + createOrderDto.getProductCode());
 		}
 
 		Optional<Orders> optOrder = orderRepository.findAll().stream()

@@ -29,7 +29,7 @@ public class OrderController {
 
 	@ApiOperation("API to create order")
 	@PostMapping(value = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String createOrder(@RequestBody @Valid @NotNull CreateOrderDto createOrderDto) {
+	public String createOrder(@RequestBody @NotNull CreateOrderDto createOrderDto) {
 		return orderService.createOrder(createOrderDto);
 
 	}
@@ -38,6 +38,5 @@ public class OrderController {
 	@GetMapping(value = "/retrieveOrder/{orderNumber}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Orders retrieveOrder(@PathVariable @Valid String orderNumber) {
 		return orderService.getOrder(Long.valueOf(orderNumber));
-
 	}
 }
