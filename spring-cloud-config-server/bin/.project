@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>order-mgmt-api-gateway</name>
+	<name>order-mgmt-config-server</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -25,4 +25,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>git-localconfig-repo</name>
+			<type>2</type>
+			<location>D:/My Document/Mihir-Learning-2017-18-19/Mihir-SourceCodesWithWorkSpace/GiHubProjects/Order_Management_Systems/git-localconfig-repo</location>
+		</link>
+	</linkedResources>
 </projectDescription>
