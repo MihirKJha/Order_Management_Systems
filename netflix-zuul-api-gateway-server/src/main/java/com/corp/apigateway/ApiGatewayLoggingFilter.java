@@ -1,4 +1,4 @@
-package com.corp.netflixzuulapigatewayserver;
+package com.corp.apigateway;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 @Component
-public class ZuulLoggingFilter extends ZuulFilter{
+public class ApiGatewayLoggingFilter extends ZuulFilter{
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -1,4 +1,4 @@
-package com.corp.netflixeurekanamingserver;
+package com.corp.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class NetflixEurekaNamingServerApplication {
+public class OrderMgmtEurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NetflixEurekaNamingServerApplication.class, args);
+		SpringApplication.run(OrderMgmtEurekaApplication.class, args);
 	}
 }

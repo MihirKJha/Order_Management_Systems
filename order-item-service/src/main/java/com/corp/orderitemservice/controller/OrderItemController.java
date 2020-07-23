@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.corp.orderitemservice.dto.CreateOrderItemDto;
+import com.corp.orderitemservice.dto.CreateOrderItemRequest;
 import com.corp.orderitemservice.entity.OrderItem;
 import com.corp.orderitemservice.service.OrderItemService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -20,22 +20,24 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@RestController
-@RequestMapping("/orderItem")
 @Api("Rest controller for order item")
+@RestController
+@RequestMapping(value = "/orderItem",
+	produces = MediaType.APPLICATION_JSON_VALUE,
+	consumes = MediaType.APPLICATION_JSON_VALUE)
 public class OrderItemController {
 
 	@Autowired
 	private OrderItemService orderItemService;
 
 	@ApiOperation("API to create order item")
-	@PostMapping(value = "/createOrderItem", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String createOrderItem(@RequestBody @NotNull CreateOrderItemDto createOrderItemDto) {
+	@PostMapping
+	public String createOrderItem(@RequestBody @NotNull CreateOrderItemRequest createOrderItemDto) {
 		return orderItemService.createOrderItem(createOrderItemDto);
 	}
 
 	@ApiOperation("API to retrieve order item")
-	@GetMapping(value = "/retrieveOrderItem/{productCode}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/{productCode}")
 	@HystrixCommand(fallbackMethod = "fallbackOrderItem")
 	public OrderItem retrieveOrderItem(@PathVariable("productCode") @Valid @NotNull String productCode) {
 		return orderItemService.getOrderItem(productCode);

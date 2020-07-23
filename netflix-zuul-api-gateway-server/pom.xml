@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.corp</groupId>
-	<artifactId>netflix-zuul-api-gateway-server</artifactId>
+	<artifactId>order-mgmt-api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>netflix-zuul-api-gateway-server</name>
-	<description>netflix-zuul-api-gateway-server</description>
+	<name>order-mgmt-api-gateway</name>
+	<description>order-mgmt-api-gateway</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

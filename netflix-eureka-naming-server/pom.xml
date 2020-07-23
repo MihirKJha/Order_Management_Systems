@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.corp</groupId>
-	<artifactId>netflix-eureka-naming-server</artifactId>
+	<artifactId>order-mgmt-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>netflix-eureka-naming-server</name>
-	<description>netflix-eureka-naming-server</description>
+	<name>order-mgmt-eureka-server</name>
+	<description>order-mgmt-eureka-server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

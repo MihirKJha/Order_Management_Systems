@@ -8,12 +8,12 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.corp.orderservice.dto.CreateOrderDto;
+import com.corp.orderservice.dto.CreateOrderRequest;
+import com.corp.orderservice.dto.OrderItemResponse;
 import com.corp.orderservice.entity.Orders;
 import com.corp.orderservice.exception.OrderItemNotFoundException;
 import com.corp.orderservice.proxy.OrderItemServiceProxy;
 import com.corp.orderservice.repository.OrderRepository;
-import com.corp.orderservice.vo.OrderItemVo;
 
 import lombok.extern.log4j.Log4j;
 
@@ -30,10 +30,10 @@ public class OrderServiceImpl implements OrderService {
 	private static final String error = "Product not found ";
 
 	@Override
-	public String createOrder(CreateOrderDto createOrderDto) {
+	public String createOrder(CreateOrderRequest createOrderDto) {
 		log.info("createOrderDto inside createOrder  " + createOrderDto);
 
-		OrderItemVo orderItem = orderItemServiceProxy.retrieveOrderItem(createOrderDto.getProductCode());
+		OrderItemResponse orderItem = orderItemServiceProxy.retrieveOrderItem(createOrderDto.getProductCode());
 
 		if (StringUtils.isBlank(orderItem.getProductCode())) {
 			throw new OrderItemNotFoundException(error + createOrderDto.getProductCode());
@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
 
 		Orders order = new Orders();
 		order.setOrderDate(new Date());
-		order.setOrderItem(createOrderDto.getProductCode());
+		order.setProductCode(createOrderDto.getProductCode());
 		order.setOrderNumber(orderNumber);
 		order.setCustomerName(createOrderDto.getCustomerName());
 		order.setShippingAddress(createOrderDto.getShippingAddress());

@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.corp.orderitemservice.dto.CreateOrderItemDto;
+import com.corp.orderitemservice.dto.CreateOrderItemRequest;
 import com.corp.orderitemservice.entity.OrderItem;
 import com.corp.orderitemservice.service.OrderItemService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,7 +60,7 @@ class OrderItemServiceUnitTest {
 		orderItem.setProductName("LAPTOP");
 		orderItem.setQuantity(10);
 
-		CreateOrderItemDto createOrderDto = new CreateOrderItemDto();
+		CreateOrderItemRequest createOrderDto = new CreateOrderItemRequest();
 		createOrderDto.setProductCode("LAP");
 
 		given(orderItemService.createOrderItem(createOrderDto)).willReturn(String.valueOf(orderItem.getProductCode()));

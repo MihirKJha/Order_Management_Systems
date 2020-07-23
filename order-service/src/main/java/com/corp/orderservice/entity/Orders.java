@@ -34,8 +34,8 @@ public class Orders {
 	@Column(name = "SHIPPING_ADDRESS")
 	private String shippingAddress;
 
-	@Column(name = "ORDER_ITEM")
-	private String orderItem;
+	@Column(name = "PRODUCT_CODE")
+	private String productCode;
 
 	@Column(name = "TOTAL")
 	private long total;

@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CreateOrderDto {
+public class CreateOrderRequest {
 	@NotEmpty
 	private String customerName;
 	@NotNull

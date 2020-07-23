@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.corp.orderservice.dto.CreateOrderDto;
+import com.corp.orderservice.dto.CreateOrderRequest;
 import com.corp.orderservice.entity.Orders;
 import com.corp.orderservice.service.OrderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,7 +39,7 @@ class OrderServiceUnitTest {
 		// given
 		Orders order = new Orders();
 		order.setOrderDate(new Date());
-		order.setOrderItem("LAP");
+		order.setProductCode("LAP");
 		order.setOrderNumber(1);
 		order.setCustomerName("Jhon");
 		order.setShippingAddress("Kolkata India-700091");
@@ -62,13 +62,13 @@ class OrderServiceUnitTest {
 		// given
 		Orders order = new Orders();
 		order.setOrderDate(new Date());
-		order.setOrderItem("LAP");
+		order.setProductCode("LAP");
 		order.setOrderNumber(1);
 		order.setCustomerName("Jhon");
 		order.setShippingAddress("Kolkata India-700091");
 		order.setTotal(250);
 
-		CreateOrderDto createOrderDto = new CreateOrderDto();
+		CreateOrderRequest createOrderDto = new CreateOrderRequest();
 		createOrderDto.setProductCode("LAP");
 
 		given(orderService.createOrder(createOrderDto)).willReturn(String.valueOf(order.getOrderNumber()));

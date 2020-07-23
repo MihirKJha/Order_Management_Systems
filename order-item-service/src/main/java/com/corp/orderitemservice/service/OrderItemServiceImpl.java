@@ -3,7 +3,7 @@ package com.corp.orderitemservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.corp.orderitemservice.dto.CreateOrderItemDto;
+import com.corp.orderitemservice.dto.CreateOrderItemRequest;
 import com.corp.orderitemservice.entity.OrderItem;
 import com.corp.orderitemservice.repository.OrderItemRepository;
 
@@ -17,7 +17,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	private OrderItemRepository orderItemRepository;
 
 	@Override
-	public String createOrderItem(CreateOrderItemDto createOrderItemDto) {
+	public String createOrderItem(CreateOrderItemRequest createOrderItemDto) {
 		log.info("createOrderItemDto inside createOrderItem " + createOrderItemDto);
 
 		OrderItem orderItem = new OrderItem();

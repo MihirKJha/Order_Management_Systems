@@ -1,11 +1,11 @@
 package com.corp.orderservice.service;
 
-import com.corp.orderservice.dto.CreateOrderDto;
+import com.corp.orderservice.dto.CreateOrderRequest;
 import com.corp.orderservice.entity.Orders;
 
 public interface OrderService {
 
-	public String createOrder(CreateOrderDto createOrderDto);
+	public String createOrder(CreateOrderRequest createOrderDto);
 
 	public Orders getOrder(Long orderNumber);
 
